@@ -21,7 +21,7 @@ const ChatBox = () => {
     const [socketConnected, setSocketConnected] = useState(false)
     const {user, selectedChat, setSelectedChat, fetchAgain, setFetchAgain, unreadMsgs, setUnreadMsgs} = useChatContext()
     const toast = useToast()
-    const ENDPOINT = 'http://localhost:5000'
+    const ENDPOINT = 'https://my-chatty.herokuapp.com/'
 
     useEffect(() => {
         socket = io(ENDPOINT);
