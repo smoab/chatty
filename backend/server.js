@@ -23,9 +23,9 @@ app.use('/api/message', messagingRouter)
 
 const __currdirname = path.resolve()
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__currdirname, "frontend", "build")))
+    app.use(express.static(path.join(__currdirname, "..", "frontend", "build")))
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__currdirname, "frontend", "build", "index.html"));
+        res.sendFile(path.join(__currdirname, "..", "frontend", "build", "index.html"));
     })
 }
 //-----------Deployment------------
@@ -39,7 +39,7 @@ app.use(errorHandler)
 const PORT = process.env.PORT || 5000
 const httpServer = createServer(app)
 
-const io = new Server(httpServer, {pingTimeout: 60000, cors: {origin: "https://my-chatty.herokuapp.com/"}})
+const io = new Server(httpServer, {pingTimeout: 60000, cors: {origin: "https://chatty-ys7m.onrender.com/"}})
 io.on('connection', socket => {
 
     socket.on('setup', userData => {
